@@ -5,7 +5,14 @@
   "rules": {
     "prettier/prettier": ["error"]
   },
+  "settings": {
+    "import/resolver": "webpack"
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  },
   "globals": {
-    "document": true
+    "document": false
   }
 }

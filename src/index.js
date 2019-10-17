@@ -1,8 +1,8 @@
 import React from 'react'
-import css from './index.css'
+import ReactDOM from 'react-dom'
+import App from './app'
 
-const App = () => {
-  return <div className={css.div}>Hello React,Webpack 4 & Babel 7!</div>
-}
+const component = React.createElement(App)
+const element = document.getElementById('root')
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(component, element)

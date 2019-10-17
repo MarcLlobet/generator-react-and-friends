@@ -1,14 +1,19 @@
-const HtmlWebpackPlugin = require('html-webpack-plugin'),
-  TerserJSPlugin = require('terser-webpack-plugin'),
-  MiniCssExtractPlugin = require('mini-css-extract-plugin'),
-  OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin'),
-  isDevelopment = process.env.NODE_ENV !== 'production'
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const TerserJSPlugin = require('terser-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
+
+const isDevelopment = process.env.NODE_ENV !== 'production'
 
 module.exports = {
+  context: __dirname,
   entry: './src',
   output: {
     path: `${__dirname}/build`,
     filename: 'bundle.js'
+  },
+  resolve: {
+    extensions: ['.js', '.jsx', '.scss', '.css']
   },
   module: {
     rules: [
@@ -61,7 +66,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      template: './src/index.html',
+      template: './src/template.html',
       minify: !isDevelopment,
       hash: !isDevelopment
     }),
