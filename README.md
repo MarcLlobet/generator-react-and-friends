@@ -1,2 +1,3 @@
-# react-game
-A game done with react.
+# generator-react-boilerplate
+
+A boilerplate generator for react projects.
