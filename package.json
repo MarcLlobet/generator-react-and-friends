@@ -2,6 +2,12 @@
   "name": "generator-react-boilerplate",
   "version": "1.0.0",
   "description": "A boilerplate generator for react projects.",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "files": [
+    "generators"
+  ],
   "main": "index.js",
   "scripts": {
     "start": "webpack-dev-server --open --hot --mode development",
@@ -10,17 +16,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MarcLlobet/react-game.git"
+    "url": "git+https://github.com/MarcLlobet/generator-react-boilerplate.git"
   },
   "author": "https://github.com/MarcLlobet",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MarcLlobet/react-game/issues"
+    "url": "https://github.com/MarcLlobet/generator-react-boilerplate/issues"
   },
-  "homepage": "https://github.com/MarcLlobet/react-game#readme",
+  "homepage": "https://github.com/MarcLlobet/generator-react-boilerplate#readme",
   "dependencies": {
     "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react-dom": "^16.10.2",
+    "yeoman-generator": "^4.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.4",
