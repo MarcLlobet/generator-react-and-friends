@@ -1,5 +1,5 @@
 {
-  "name": "generator-react-boilerplate",
+  "name": "generator-react-and-friends",
   "version": "1.0.0",
   "description": "A boilerplate generator for react projects.",
   "keywords": [
@@ -16,14 +16,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/MarcLlobet/generator-react-boilerplate.git"
+    "url": "git+https://github.com/MarcLlobet/generator-react-and-friends.git"
   },
   "author": "https://github.com/MarcLlobet",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/MarcLlobet/generator-react-boilerplate/issues"
+    "url": "https://github.com/MarcLlobet/generator-react-and-friends/issues"
   },
-  "homepage": "https://github.com/MarcLlobet/generator-react-boilerplate#readme",
+  "homepage": "https://github.com/MarcLlobet/generator-react-and-friends#readme",
   "dependencies": {
     "yeoman-generator": "^4.2.0"
   }

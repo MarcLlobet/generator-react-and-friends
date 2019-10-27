@@ -1,4 +1,4 @@
-# generator-react-boilerplate
+# generator-react-and-friends
 A boilerplate generator for react projects.
 
 ### Installation
