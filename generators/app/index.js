@@ -1,5 +1,10 @@
 const Generator = require('yeoman-generator')
-const Dependencies = require('./dependencies')
+const Dependencies = require('./dependencies.json')
+
+const packageManagers = {
+  yarn: 'yarnInstall',
+  npm: 'npmInstall'
+}
 
 module.exports = class extends Generator {
   constructor(args, opts) {
@@ -7,7 +12,7 @@ module.exports = class extends Generator {
 
     this.argument('appname', { type: String, required: false })
 
-    this.outputFolder = 'app/'
+    this.outputFolder = this.destinationRoot()
 
     this.isValidUrl = url => {
       try {
@@ -59,15 +64,24 @@ module.exports = class extends Generator {
         message: `Install dependencies now?`,
         choices: Object.values(this.installOptions),
         default: this.installOptions.generateJson
+      },
+      {
+        type: 'rawlist',
+        name: `packageManager`,
+        message: `Which package manager you use?`,
+        choices: Object.keys(packageManagers),
+        when: answers => answers.install === this.installOptions.installNow
       }
     ])
   }
 
   writing() {
+    const { name, description, repository, author } = this.answers
+
     const packageInit = {
-      name: this.answers.name,
+      name,
       version: '1.0.0',
-      description: this.answers.description,
+      description,
       main: 'index.js',
       scripts: {
         start: 'webpack-dev-server --open --hot --mode development',
@@ -75,27 +89,56 @@ module.exports = class extends Generator {
         test: 'jest'
       },
       license: 'ISC',
-      ...(this.isValidUrl(this.answers.repository) && {
-        repository: { url: this.answers.repository },
+      ...(this.isValidUrl(repository) && {
+        repository: { url: repository },
         bugs: {
-          url: `${this.answers.repository}/issues`
+          url: `${repository}/issues`
         },
-        homepage: `${this.answers.repository}#readme`
+        homepage: `${repository}#readme`
       }),
-      ...(this.answers.author && { author: this.answers.author })
+      ...(author && { author })
     }
 
     if (this.installOptions.generateJson === this.answers.install) {
-      const packageJson = { ...Dependencies.versioned, ...packageInit }
+      const packageJson = { ...Dependencies, ...packageInit }
 
-      this.fs.extendJSON(this.destinationPath(`${this.outputFolder}package.json`), packageJson)
+      this.fs.extendJSON(this.destinationPath('package.json'), packageJson)
     }
+
+    const filesToCopy = [
+      '.babelrc',
+      '.eslintrc',
+      '.gitignore',
+      '.prettierrc',
+      '.stylelintrc',
+      'webpack.config.js',
+      'src/index.js',
+      'src/app/index.jsx',
+      'src/app/index.css'
+    ]
+
+    this.fs.copyTpl(this.templatePath('README.md'), this.destinationPath('README.md'), {
+      name,
+      description
+    })
+
+    this.fs.copyTpl(
+      this.templatePath('src/template.html'),
+      this.destinationPath('src/template.html'),
+      {
+        name,
+        description
+      }
+    )
+
+    filesToCopy.forEach(file => this.fs.copy(this.templatePath(file), this.destinationPath(file)))
   }
 
   install() {
     if (this.installOptions.installNow === this.answers.install) {
-      this.packageManager(Dependencies.main)
-      this.packageManager(Dependencies.dev, { dev: true })
+      const packageManager = this[packageManagers[this.answers.packageManager]]
+      packageManager(Object.keys(Dependencies.dependencies))
+      packageManager(Object.keys(Dependencies.devDependencies), { dev: true })
     }
   }
 
