@@ -1,0 +1,30 @@
+{
+  "name": "generator-react-boilerplate",
+  "version": "1.0.0",
+  "description": "A boilerplate generator for react projects.",
+  "keywords": [
+    "yeoman-generator"
+  ],
+  "files": [
+    "generators"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --open --hot --mode development",
+    "build": "webpack --mode production",
+    "test": "jest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MarcLlobet/generator-react-boilerplate.git"
+  },
+  "author": "https://github.com/MarcLlobet",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MarcLlobet/generator-react-boilerplate/issues"
+  },
+  "homepage": "https://github.com/MarcLlobet/generator-react-boilerplate#readme",
+  "dependencies": {
+    "yeoman-generator": "^4.2.0"
+  }
+}
