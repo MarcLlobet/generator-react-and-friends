@@ -1,6 +1,6 @@
 {
   "name": "generator-react-and-friends",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A boilerplate generator for react projects.",
   "keywords": [
     "yeoman-generator"

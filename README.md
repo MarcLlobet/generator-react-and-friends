@@ -10,7 +10,7 @@ cd my-new-project
 
 Run the generator: 
 ```
-yo react-boilerplate
+yo react-and-friends
 ```
 
 ## TO DO:
