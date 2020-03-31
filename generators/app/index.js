@@ -111,6 +111,7 @@ module.exports = class extends Generator {
       '.gitignore',
       '.prettierrc',
       '.stylelintrc',
+      'tsconfig.json',
       'webpack.config.js',
       'src/index.js',
       'src/app/index.jsx',
@@ -143,6 +144,6 @@ module.exports = class extends Generator {
   }
 
   end() {
-    this.log('Enjoy the React Boilerplate!')
+    this.log(`Welcome to the React friends' community!`)
   }
 }
