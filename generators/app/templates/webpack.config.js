@@ -17,6 +17,7 @@ module.exports = {
   },
   module: {
     rules: [
+      { test: /\.js$/, loader: "source-map-loader" },
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
@@ -24,6 +25,7 @@ module.exports = {
           loader: 'babel-loader'
         }
       },
+      { test: /\.tsx?$/, loader: "awesome-typescript-loader" },
       {
         test: /\.html$/,
         use: [
